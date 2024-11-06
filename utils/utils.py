@@ -17,10 +17,10 @@ from utils.constants import CLASSIFIERS
 from utils.constants import ITERATIONS
 from utils.constants import MTS_DATASET_NAMES
 
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
-from sklearn.preprocessing import LabelEncoder
+from scikit-learn.metrics import accuracy_score
+from scikit-learn.metrics import precision_score
+from scikit-learn.metrics import recall_score
+from scikit-learn.preprocessing import LabelEncoder
 
 from scipy.interpolate import interp1d
 from scipy.io import loadmat, arff
@@ -588,7 +588,7 @@ def viz_for_survey_paper(root_dir, filename='results-ucr-mts.csv'):
 
 def viz_cam(root_dir):
     import keras
-    import sklearn
+    import scikit-learn
     classifier = 'fcn'
     archive_name = 'UCR_TS_Archive_2015'
     dataset_name = 'Meat'
@@ -606,7 +606,7 @@ def viz_cam(root_dir):
     y_test  = datasets_dict[dataset_name][3]
 
     # transform to binary labels
-    enc = sklearn.preprocessing.OneHotEncoder()
+    enc = scikit-learn.preprocessing.OneHotEncoder()
     enc.fit(np.concatenate((y_train, y_test), axis=0).reshape(-1, 1))
     y_train_binary = enc.transform(y_train.reshape(-1, 1)).toarray()
 
