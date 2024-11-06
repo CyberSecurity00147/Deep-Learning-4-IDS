@@ -10,7 +10,7 @@ from utils.utils import get_info_run
 
 import numpy as np
 import sys
-import sklearn 
+import scikit-learn 
 
 def fit_classifier(test_spec=False): 
     x_train = datasets_dict[dataset_name][0]
@@ -35,7 +35,7 @@ def fit_classifier(test_spec=False):
         y_test=y_test.reshape(-1,1)
         y_true=y_true.reshape(-1,1)
     else:
-        enc = sklearn.preprocessing.OneHotEncoder()
+        enc = scikit-learn.preprocessing.OneHotEncoder()
         enc.fit(np.concatenate((y_train,y_test),axis =0).reshape(-1,1))
         y_train = enc.transform(y_train.reshape(-1,1)).toarray()
         y_test = enc.transform(y_test.reshape(-1,1)).toarray()
